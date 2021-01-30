@@ -10,7 +10,6 @@ using UnityEngine.Tilemaps;
 public class TurnManager : MonoBehaviour
 {
     public int turnCounter;
-    [Range(0f, 2f)] public float scaleFactor;
     public AIManager AIUnits;
     public Tilemap map;
 
@@ -25,8 +24,11 @@ public class TurnManager : MonoBehaviour
             Movement unitMovement = unit.GetComponentInChildren<Movement>();
 
             // Move to a random adjacent position
-            Vector2 nextPosition = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-            Vector3Int gridPosition = map.WorldToCell(nextPosition.normalized * scaleFactor);
+            // Vector2 randDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            Vector2 randDirection = Vector2.right;
+            Vector2 nextPosition = (Vector2)unit.transform.position + randDirection;
+            //Debug.Log("Next Position: " + nextPosition);
+            Vector3Int gridPosition = map.WorldToCell(nextPosition);
             if (map.HasTile(gridPosition))
             {
                 Debug.Log("Moving AI");

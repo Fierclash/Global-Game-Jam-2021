@@ -43,7 +43,7 @@ public class AIManager : MonoBehaviour
 
         // Generate positions
         for(int i=0; i<count; i++)
-            positions.Add(new Vector3(Random.Range(0, 5), Random.Range(0, 5), 0));
+            positions.Add(Vector3.zero);
 
         return positions;
     }
