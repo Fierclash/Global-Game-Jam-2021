@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void MouseClick() {
-        Debug.Log("Attempting to Move");
+        // Debug.Log("Attempting to Move");
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         float distance = Vector3.Distance(transform.position, destination);
         if (distance > lowerLimit && distance < upperLimit)
         {
-            Debug.Log("Moving to" + destination);
+            // Debug.Log("Moving to" + destination);
             movement.Move(destination);
         }
     }

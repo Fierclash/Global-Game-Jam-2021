@@ -11,7 +11,7 @@ using UnityEngine;
  */
 public class Movement : MonoBehaviour
 {
-    [Range(0f, 1f)]public float movementSpeed;
+    [Range(0f, 1f)] public float movementSpeed;
     public Transform hostBody;
 
     private bool isMoving = false;
