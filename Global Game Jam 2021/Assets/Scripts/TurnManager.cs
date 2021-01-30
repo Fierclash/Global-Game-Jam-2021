@@ -24,8 +24,8 @@ public class TurnManager : MonoBehaviour
             Movement unitMovement = unit.GetComponentInChildren<Movement>();
 
             // Move to a random adjacent position
-            // Vector2 randDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-            Vector2 randDirection = Vector2.right;
+            Vector2 randDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            // Vector2 randDirection = Vector2.right;
             Vector2 nextPosition = (Vector2)unit.transform.position + randDirection;
             //Debug.Log("Next Position: " + nextPosition);
             Vector3Int gridPosition = map.WorldToCell(nextPosition);

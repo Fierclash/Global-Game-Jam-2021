@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 /*
  *  Movement Class
  *      Allows movement between tile positions
@@ -17,8 +18,30 @@ public class Movement : MonoBehaviour
     private bool isMoving = false;
     private Vector3 destination;
 
+    public Tilemap map;
+
+    [SerializeField] private float lowerLimit = 0.1f;
+    [SerializeField] private float upperLimit = 2f;
+
+    // Validates moves
+    public void Move(Vector2 nextPosition)
+    {
+        Vector3Int gridPosition = map.WorldToCell(nextPosition);
+        if (map.HasTile(gridPosition)) {
+            destination = map.GetCellCenterWorld(gridPosition);
+        }
+
+        // Move if position is in range
+        float distance = Vector3.Distance(transform.position, destination);
+        if (distance > lowerLimit && distance < upperLimit)
+        {
+            // Debug.Log("Moving to" + destination);
+            MoveAction(destination);
+        }
+    }
+
     // Moves to another tile
-    public void Move(Vector3 position)
+    private void MoveAction(Vector3 position)
     {
         // Do not move if currently moving
         if (isMoving)
