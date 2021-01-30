@@ -11,12 +11,12 @@ using UnityEngine;
  */
 public class Movement : MonoBehaviour
 {
-    public float movementTime;
+    [Range(0f, 1f)]public float movementSpeed;
     public Transform hostBody;
 
     private bool isMoving = false;
     private Vector3 destination;
-    /*
+
     void Update()
     {
         if (isMoving)
@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour
             destination = transform.position + Vector3.right;
             StartCoroutine(MoveToTile(destination));
         }
-    }*/
+    }
 
     // Moves to another tile
     public void Move(Vector3 position)
@@ -44,9 +44,9 @@ public class Movement : MonoBehaviour
         if (isMoving)
             return;
 
-        hostBody.position = position;
+        //hostBody.position = position;
 
-        StartCoroutine(MoveToTile(destination));
+        StartCoroutine(MoveToTile(position));
     }
     
     // Coroutine for tweening
@@ -55,9 +55,10 @@ public class Movement : MonoBehaviour
         isMoving = true;
         while(Vector3.Distance(hostBody.position, position) > 0.05f)
         {
-            hostBody.position = Vector3.Lerp(hostBody.position, position, Time.deltaTime);
+            hostBody.position = Vector3.Lerp(hostBody.position, position, movementSpeed);
             yield return null;
         }
+        hostBody.position = position;
         isMoving = false;
     }
 

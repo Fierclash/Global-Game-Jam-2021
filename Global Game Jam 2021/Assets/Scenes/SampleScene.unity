@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 312622010}
   - component: {fileID: 312622012}
   - component: {fileID: 312622011}
+  - component: {fileID: 312622013}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda353a38d5a34c4c94a4f4d8d8c7af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementTime: 1
+  movementSpeed: 0.1
   hostBody: {fileID: 839283589}
 --- !u!114 &312622012
 MonoBehaviour:
@@ -179,6 +180,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a944f429e6c3b40bd38c9b15417269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &312622013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312622009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b79a4f42104e44b9cd5361713e8b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 487709582}
+  movementSpeed: 1
+  hostBody: {fileID: 839283589}
+  movement: {fileID: 312622011}
 --- !u!1 &487709579
 GameObject:
   m_ObjectHideFlags: 0
