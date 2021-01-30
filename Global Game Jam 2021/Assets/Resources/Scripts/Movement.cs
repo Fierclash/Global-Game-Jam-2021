@@ -17,26 +17,6 @@ public class Movement : MonoBehaviour
     private bool isMoving = false;
     private Vector3 destination;
 
-    void Update()
-    {
-        if (isMoving)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("Moving to Left");
-            destination = transform.position + Vector3.left;
-            MoveToTile(destination);
-            StartCoroutine(MoveToTile(destination));
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            Debug.Log("Moving to Right");
-            destination = transform.position + Vector3.right;
-            StartCoroutine(MoveToTile(destination));
-        }
-    }
-
     // Moves to another tile
     public void Move(Vector3 position)
     {

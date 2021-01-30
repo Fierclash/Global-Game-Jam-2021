@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     public int movementSpeed;
     public Transform hostBody;
     public Movement movement;
-    
+
+    [SerializeField] private float lowerLimit = 0.1f;
+    [SerializeField] private float upperLimit = 2f;
     private Vector3 destination;
 
 
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move if position is in range
-        if (Vector3.Distance(transform.position, destination) > 0.1f)
+        float distance = Vector3.Distance(transform.position, destination);
+        if (distance > lowerLimit && distance < upperLimit)
         {
             Debug.Log("Moving to" + destination);
             movement.Move(destination);
