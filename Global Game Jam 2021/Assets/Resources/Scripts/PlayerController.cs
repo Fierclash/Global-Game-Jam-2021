@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         // clicking on cell
         Vector3Int gridPosition = map.WorldToCell(mousePosition);
         if (map.HasTile(gridPosition)) {
-            destination = mousePosition;
+            destination = map.GetCellCenterWorld(gridPosition);
         }
     }
 }
