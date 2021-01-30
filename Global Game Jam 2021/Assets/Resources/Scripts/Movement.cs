@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
 
     private bool isMoving = false;
     private Vector3 destination;
-
+    /*
     void Update()
     {
         if (isMoving)
@@ -35,8 +35,21 @@ public class Movement : MonoBehaviour
             destination = transform.position + Vector3.right;
             StartCoroutine(MoveToTile(destination));
         }
+    }*/
+
+    // Moves to another tile
+    public void Move(Vector3 position)
+    {
+        // Do not move if currently moving
+        if (isMoving)
+            return;
+
+        hostBody.position = position;
+
+        StartCoroutine(MoveToTile(destination));
     }
     
+    // Coroutine for tweening
     private IEnumerator MoveToTile(Vector3 position)
     {
         isMoving = true;
