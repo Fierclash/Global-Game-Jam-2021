@@ -4738,8 +4738,12 @@ MonoBehaviour:
   dataCount: 1
   dataUnit: {fileID: 2223395512204147756, guid: 5130138ed774dc94ab99febcdfaa112b,
     type: 3}
+  corruptionCount: 3
+  corruptionNode: {fileID: 2589725809822040206, guid: 6df640f2cd4065348b3fb9369998db21,
+    type: 3}
   units: []
   dataUnits: []
+  corruptionNodes: []
   map: {fileID: 487709582}
   player: {fileID: 839283587}
 --- !u!1 &2140226425

@@ -12,8 +12,11 @@ public class AIManager : MonoBehaviour
     [SerializeField] private GameObject virusUnit;
     public int dataCount;
     [SerializeField] private GameObject dataUnit;
+    public int corruptionCount;
+    [SerializeField] private GameObject corruptionNode;
     public List<GameObject> units;
     public List<GameObject> dataUnits;
+    public List<GameObject> corruptionNodes;
     public Tilemap map;
     public GameObject player;
 
@@ -21,6 +24,7 @@ public class AIManager : MonoBehaviour
     {
         units = new List<GameObject>();
         dataUnits = new List<GameObject>();
+        corruptionNodes = new List<GameObject>();
     }
 
     void Start()
@@ -47,6 +51,13 @@ public class AIManager : MonoBehaviour
         {
             GameObject lastCreated = Instantiate(dataUnit, positions[count], Quaternion.identity);
             dataUnits.Add(lastCreated);
+            count += 1;
+        }
+
+        for(int i =0; i < corruptionCount; i++)
+        {
+            GameObject lastCreated = Instantiate(corruptionNode, positions[count], Quaternion.identity);
+            corruptionNodes.Add(lastCreated);
             count += 1;
         }
         InitUnits();
@@ -106,6 +117,20 @@ public class AIManager : MonoBehaviour
         foreach(GameObject unit in units)
         {
             
+        }
+    }
+    #endregion
+
+    #region Game Functions
+    public void corrupt()
+    {
+        List<Vector3> positions = GeneratePositions();
+        for(int i =0; i < dataCount; i++)
+        {
+            Movement dataMove = dataUnits[i].GetComponentInChildren<Movement>();
+            dataMove.MoveAction(positions[i]);
+            Debug.Log("MOVING TO");
+            Debug.Log(positions[i]);
         }
     }
     #endregion
