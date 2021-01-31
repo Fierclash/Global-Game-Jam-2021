@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public Text scoreText;
     private bool isActing = false;
     [Range(0f, 1f)] public float actionTime;
+    public AIManager ai;
+    public EndGame endGame;
 
     // Start is called before the first frame update
     void Start()
@@ -65,11 +67,14 @@ public class PlayerController : MonoBehaviour
             points++;
             scoreText.text = "Score: " + points;
             col.gameObject.SetActive(false);
+            if(points == ai.dataCount)
+                endGame.ShowEndScreen(points, ai.dataCount, TurnManager.turnCounter);
         }
     }
 
     private void Die()
     {
         this.gameObject.SetActive(false);
+        endGame.ShowEndScreen(points, ai.dataCount, TurnManager.turnCounter);
     }
 }

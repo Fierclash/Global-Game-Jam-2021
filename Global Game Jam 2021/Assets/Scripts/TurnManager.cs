@@ -10,11 +10,17 @@ using UnityEngine.UI;
  */
 public class TurnManager : MonoBehaviour
 {
-    public int turnCounter;
+    public static int turnCounter;
     public AIManager AIUnits;
     public Tilemap map;
     public Timer timer;
     public Text turnText;
+
+    void Start()
+    {
+        turnCounter = 0;
+        turnText.text = "Turn: " + turnCounter;
+    }
 
     // Progresses to the next turn and triggers the next
     // action of all AI units
