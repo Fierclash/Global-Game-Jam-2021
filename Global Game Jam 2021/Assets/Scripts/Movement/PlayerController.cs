@@ -5,17 +5,12 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    public Tilemap map;
-    public int movementSpeed;
-    public Transform hostBody;
     public Movement movement;
-    private Vector3 destination;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        destination = transform.position;
     }
 
     // Update is called once per frame
