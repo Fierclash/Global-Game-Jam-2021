@@ -366,13 +366,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataRadar: {fileID: 2144892206}
-  glitchRadar: {fileID: 1447826320}
+  corruptionRadar: {fileID: 1447826320}
   radarSprites:
   - {fileID: -2027595699768001626, guid: c34a1fb45b3f6034aab61060a9a0b0aa, type: 3}
   - {fileID: -2157069993494863645, guid: c34a1fb45b3f6034aab61060a9a0b0aa, type: 3}
   - {fileID: 4668995004699860487, guid: c34a1fb45b3f6034aab61060a9a0b0aa, type: 3}
   - {fileID: 6337911195082783346, guid: c34a1fb45b3f6034aab61060a9a0b0aa, type: 3}
   dataRadarState: 0
+  corruptionRadarState: 0
   aiManager: {fileID: 2105670593}
   player: {fileID: 839283587}
   map: {fileID: 487709582}

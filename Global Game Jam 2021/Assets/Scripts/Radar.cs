@@ -8,13 +8,14 @@ public class Radar : MonoBehaviour
 {
     [Header("Components")]
     public Image dataRadar;
-    public Image glitchRadar;
+    public Image corruptionRadar;
 
     [Header("Sprites")]
     public List<Sprite> radarSprites;
 
     [Header("Values")]
     public int dataRadarState = 0;              // Smaller Values indicate Further Signal
+    public int corruptionRadarState = 0; 
     public AIManager aiManager;
     public GameObject player;
     public Tilemap map;
@@ -23,13 +24,20 @@ public class Radar : MonoBehaviour
     void Awake()
     {
         dataRadarState = 0;
+        corruptionRadarState = 0;
     }
 
     void Update()
     {
+        // update data radar
         float dist = getClosestData();
-        int state = getDataState(dist);
+        int state = getRadarState(dist);
         UpdateDataRadar(state);
+
+        // update corruption radar
+        dist = getClosestCorruption();
+        state = getRadarState(dist);
+        UpdateCorruptionRadar(state);
     }
 
     public float getClosestData()
@@ -51,7 +59,26 @@ public class Radar : MonoBehaviour
         return minDistance;
     }
 
-    public int getDataState(float minDistance)
+    public float getClosestCorruption()
+    {
+        // get min distance of player to data
+        Vector3 playerPos = player.transform.position;
+        float minDistance = Mathf.Infinity;
+        foreach (GameObject g in aiManager.corruptionNodes)
+        {
+            if (g.activeSelf == true)
+            {
+                float distance = Vector3.Distance(playerPos, g.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                }
+            }
+        }
+        return minDistance;
+    }
+
+    public int getRadarState(float minDistance)
     {
         // convert distance into the ranges
         if (minDistance < maxRange / 3)
@@ -74,5 +101,12 @@ public class Radar : MonoBehaviour
         // Debug.Log(state);
         dataRadarState = state % radarSprites.Count;
         dataRadar.sprite = radarSprites[dataRadarState];
+    }
+
+    public void UpdateCorruptionRadar(int state)
+    {
+        // Debug.Log(state);
+        corruptionRadarState = state % radarSprites.Count;
+        corruptionRadar.sprite = radarSprites[corruptionRadarState];
     }
 }
