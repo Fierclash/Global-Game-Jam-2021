@@ -33,4 +33,14 @@ public class PlayerController : MonoBehaviour
             turnManager.NextTurn();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Die();
+    }
+
+    private void Die()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
