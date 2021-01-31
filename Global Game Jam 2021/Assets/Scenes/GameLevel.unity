@@ -216,6 +216,10 @@ MonoBehaviour:
   - {fileID: 4668995004699860487, guid: c34a1fb45b3f6034aab61060a9a0b0aa, type: 3}
   - {fileID: 6337911195082783346, guid: c34a1fb45b3f6034aab61060a9a0b0aa, type: 3}
   dataRadarState: 0
+  aiManager: {fileID: 2105670593}
+  player: {fileID: 839283587}
+  map: {fileID: 487709582}
+  maxRange: 9
 --- !u!1 &312622009
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,7 +3413,7 @@ MonoBehaviour:
   unitCount: 5
   virusUnit: {fileID: 3927784744665000985, guid: 54160cca3a9f2ec4688780ced4a698db,
     type: 3}
-  dataCount: 3
+  dataCount: 1
   dataUnit: {fileID: 2223395512204147756, guid: 5130138ed774dc94ab99febcdfaa112b,
     type: 3}
   units: []
