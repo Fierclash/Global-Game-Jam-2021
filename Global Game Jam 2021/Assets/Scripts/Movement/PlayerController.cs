@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public Movement movement;
     public Vision vision;
     public TurnManager turnManager;
-
+    private int points = 0;
+    public Text scoreText;
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreText.text = "Score: " + points;
     }
 
     // Update is called once per frame
@@ -41,6 +44,11 @@ public class PlayerController : MonoBehaviour
         if (col.tag == "Enemy")
         {
             Die();
+        } else if (col.tag == "Data")
+        {
+            points++;
+            scoreText.text = "Score: " + points;
+            col.gameObject.SetActive(false);
         }
     }
 
