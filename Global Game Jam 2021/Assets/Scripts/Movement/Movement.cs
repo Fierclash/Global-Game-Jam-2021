@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     public Tilemap map;
 
     [SerializeField] private float lowerLimit = 0.1f;
-    [SerializeField] private float upperLimit = 2f;
+    [SerializeField] private float upperLimit = 1.5f;
 
     // Validates moves
     public void Move(Vector2 nextPosition)
