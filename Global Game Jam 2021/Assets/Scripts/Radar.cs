@@ -68,7 +68,7 @@ public class Radar : MonoBehaviour
 
     public void UpdateDataRadar(int state)
     {
-        Debug.Log(state);
+        // Debug.Log(state);
         dataRadarState = state % radarSprites.Count;
         dataRadar.sprite = radarSprites[dataRadarState];
     }
