@@ -38,7 +38,10 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Die();
+        if (col.tag == "Enemy")
+        {
+            Die();
+        }
     }
 
     private void Die()

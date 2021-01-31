@@ -10,7 +10,10 @@ public class AIManager : MonoBehaviour
 {
     public int unitCount;
     [SerializeField] private GameObject virusUnit;
+    public int dataCount;
+    [SerializeField] private GameObject dataUnit;
     public List<GameObject> units;
+    public List<GameObject> dataUnits;
     public Tilemap map;
 
     void Awake()
@@ -29,11 +32,20 @@ public class AIManager : MonoBehaviour
     public void GenerateUnits()
     {
         List<Vector3> positions = GeneratePositions();
+        int count = 0;
         for(int i=0; i<unitCount; i++)
         {
             // Create and Place a Unit
-            GameObject lastCreated = Instantiate(virusUnit, positions[i], Quaternion.identity);
+            GameObject lastCreated = Instantiate(virusUnit, positions[count], Quaternion.identity);
             units.Add(lastCreated);
+            count += 1;
+        }
+
+        for(int i =0; i < dataCount; i++)
+        {
+            GameObject lastCreated = Instantiate(dataUnit, positions[count], Quaternion.identity);
+            dataUnits.Add(lastCreated);
+            count += 1;
         }
         InitUnits();
     }

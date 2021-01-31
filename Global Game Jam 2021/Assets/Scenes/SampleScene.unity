@@ -1217,7 +1217,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839283587}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -2969,7 +2969,11 @@ MonoBehaviour:
   unitCount: 5
   virusUnit: {fileID: 3927784744665000985, guid: 54160cca3a9f2ec4688780ced4a698db,
     type: 3}
+  dataCount: 3
+  dataUnit: {fileID: 2223395512204147756, guid: 5130138ed774dc94ab99febcdfaa112b,
+    type: 3}
   units: []
+  dataUnits: []
   map: {fileID: 487709582}
 --- !u!1 &2140226425
 GameObject:
