@@ -44,9 +44,29 @@ public class AIManager : MonoBehaviour
     {
         List<Vector3> positions = new List<Vector3>();
 
+        // get all valid positions
+        foreach (Vector3Int gridPosition in map.cellBounds.allPositionsWithin)
+        {
+            if (map.HasTile(gridPosition))
+            {
+                Vector3 position = map.GetCellCenterWorld(gridPosition);
+                positions.Add(position);
+            }
+        }
+
+        // shuffle
+        int length = positions.Count;
+        for(int i = 0; i < length; i++)
+        {
+            int j = Random.Range(0, length-1);
+            Vector3 temp = positions[i];
+            positions[i] = positions[j];
+            positions[j] = temp;
+        }
+        
         // Generate positions
-        for(int i=0; i<count; i++)
-            positions.Add(Vector3.zero);
+        // for(int i=0; i<count; i++)
+        //     positions.Add(Vector3.zero);
 
         return positions;
     }
