@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 /*
  *  AI Manager
  *      Stores all AI units within the field
@@ -10,6 +11,7 @@ public class AIManager : MonoBehaviour
     public int unitCount;
     [SerializeField] private GameObject virusUnit;
     public List<GameObject> units;
+    public Tilemap map;
 
     void Awake()
     {
@@ -33,6 +35,7 @@ public class AIManager : MonoBehaviour
             GameObject lastCreated = Instantiate(virusUnit, positions[i], Quaternion.identity);
             units.Add(lastCreated);
         }
+        InitUnits();
     }
 
     // Generates a list of positions on the grid
@@ -55,7 +58,8 @@ public class AIManager : MonoBehaviour
     {
         foreach(GameObject unit in units)
         {
-
+            Movement unitMovement = unit.GetComponentInChildren<Movement>();
+            unitMovement.map = map;
         }
     }
 
