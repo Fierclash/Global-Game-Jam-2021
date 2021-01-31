@@ -20,6 +20,7 @@ public class AIManager : MonoBehaviour
     void Awake()
     {
         units = new List<GameObject>();
+        dataUnits = new List<GameObject>();
     }
 
     void Start()
