@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
     }
 
     // Moves to another tile
-    private void MoveAction(Vector3 position)
+    public void MoveAction(Vector3 position)
     {
         // Do not move if currently moving
         if (isMoving)

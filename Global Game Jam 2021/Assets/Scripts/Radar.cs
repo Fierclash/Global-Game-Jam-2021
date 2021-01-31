@@ -39,10 +39,13 @@ public class Radar : MonoBehaviour
         float minDistance = Mathf.Infinity;
         foreach (GameObject g in aiManager.dataUnits)
         {
-            float distance = Vector3.Distance(playerPos, g.transform.position);
-            if (distance < minDistance)
+            if (g.activeSelf == true)
             {
-                minDistance = distance;
+                float distance = Vector3.Distance(playerPos, g.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                }
             }
         }
         return minDistance;

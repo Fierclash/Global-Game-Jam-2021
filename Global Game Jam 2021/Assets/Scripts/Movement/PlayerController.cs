@@ -64,12 +64,16 @@ public class PlayerController : MonoBehaviour
             Die();
         } else if (col.tag == "Data")
         {
+            col.gameObject.SetActive(false);
             points++;
             scoreText.text = "Score: " + points;
+        } else if (col.tag == "Corruption")
+        {
             col.gameObject.SetActive(false);
-            if(points == ai.dataCount)
-                endGame.ShowEndScreen(points, ai.dataCount, TurnManager.turnCounter);
+            ai.corrupt();
         }
+        if(points == ai.dataCount)
+            endGame.ShowEndScreen(points, ai.dataCount, TurnManager.turnCounter);
     }
 
     private void Die()
