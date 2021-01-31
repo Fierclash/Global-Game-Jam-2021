@@ -28,7 +28,7 @@ public class AIManager : MonoBehaviour
     // position on the field
     public void GenerateUnits()
     {
-        List<Vector3> positions = GeneratePositions(unitCount);
+        List<Vector3> positions = GeneratePositions();
         for(int i=0; i<unitCount; i++)
         {
             // Create and Place a Unit
@@ -40,7 +40,7 @@ public class AIManager : MonoBehaviour
 
     // Generates a list of positions on the grid
     // Each position must be unique from one another
-    private List<Vector3> GeneratePositions(int count)
+    private List<Vector3> GeneratePositions()
     {
         List<Vector3> positions = new List<Vector3>();
 
@@ -54,7 +54,7 @@ public class AIManager : MonoBehaviour
             }
         }
 
-        // shuffle
+        // shuffle positions list
         int length = positions.Count;
         for(int i = 0; i < length; i++)
         {
@@ -63,10 +63,6 @@ public class AIManager : MonoBehaviour
             positions[i] = positions[j];
             positions[j] = temp;
         }
-        
-        // Generate positions
-        // for(int i=0; i<count; i++)
-        //     positions.Add(Vector3.zero);
 
         return positions;
     }

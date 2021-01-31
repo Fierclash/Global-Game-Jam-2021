@@ -20,7 +20,7 @@ public class TurnManager : MonoBehaviour
         // Triggers next AI moves
         foreach(GameObject unit in AIUnits.units)
         {
-            Debug.Log("Triggering AI");
+            // Debug.Log("Triggering AI");
             Movement unitMovement = unit.GetComponentInChildren<Movement>();
 
             // Move to a random adjacent position
