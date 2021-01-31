@@ -15,6 +15,7 @@ public class AIManager : MonoBehaviour
     public List<GameObject> units;
     public List<GameObject> dataUnits;
     public Tilemap map;
+    public GameObject player;
 
     void Awake()
     {
@@ -54,6 +55,8 @@ public class AIManager : MonoBehaviour
     // Each position must be unique from one another
     private List<Vector3> GeneratePositions()
     {
+        Vector3Int playerGridPos = map.WorldToCell(player.transform.position);
+        Vector3 playerPos = map.GetCellCenterWorld(playerGridPos);
         List<Vector3> positions = new List<Vector3>();
 
         // get all valid positions
@@ -62,7 +65,12 @@ public class AIManager : MonoBehaviour
             if (map.HasTile(gridPosition))
             {
                 Vector3 position = map.GetCellCenterWorld(gridPosition);
-                positions.Add(position);
+                
+                // so things don't spawn on the player
+                if (position != playerPos)
+                {
+                    positions.Add(position);
+                }
             }
         }
 
