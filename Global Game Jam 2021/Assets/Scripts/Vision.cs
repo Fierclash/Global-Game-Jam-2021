@@ -56,6 +56,7 @@ public class Vision : MonoBehaviour
             else
                 rightBound--;
 
+            // Loop through each position in the current row
             for (int j = leftBound; j <= rightBound; j++)
             {
                 adjacentTiles.Add(new Vector3Int(j, i, 0));
