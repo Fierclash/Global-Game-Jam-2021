@@ -23,22 +23,47 @@ public class Vision : MonoBehaviour
         Vector3Int currentTile = fogOfWar.WorldToCell(position);
 
         // Set Fog Tiles
-        int outerRange = vision + 1;
-        for (int x = -outerRange; x <= outerRange; x++)
+        List<Vector3Int> currentTileset = DetermineAdjacentTiles(vision + 1, currentTile.x / 2);
+        foreach (Vector3Int point in currentTileset)
         {
-            for (int y = -outerRange; y <= outerRange; y++)
-            {
-                fogOfWar.SetTile(currentTile + new Vector3Int(x, y, 0), fogTile);
-            }
+            fogOfWar.SetTile(currentTile + point, fogTile);
         }
 
         // Reveal Adjacent Tiles
-        for (int x=-vision; x <= vision; x++)
+        currentTileset = DetermineAdjacentTiles(vision, currentTile.x / 2);
+        foreach (Vector3Int point in currentTileset)
         {
-            for (int y = -vision; y <= vision; y++)
+            fogOfWar.SetTile(currentTile + point, null);
+        }
+    }
+
+    public List<Vector3Int> DetermineAdjacentTiles(int range, int positionParity)
+    {
+        List<Vector3Int> adjacentTiles = new List<Vector3Int>();
+
+        // Middle Row
+        for (int i = range; i <= range; i++)
+            adjacentTiles.Add(new Vector3Int(i, 0, 0));
+
+        // Upper and Lower Halves
+        // Since Middle row is already set, i < range does not need to include it
+        int leftBound = -range;
+        int rightBound = range;
+        for (int i = 0; i < range; i++)
+        {
+            // Even Parity
+            if (i % 2 + positionParity == 0)
+                leftBound++;
+            else
+                rightBound--;
+
+            for(int j = leftBound; j <= rightBound; j++)
             {
-                fogOfWar.SetTile(currentTile + new Vector3Int(x, y, 0), null);
+                adjacentTiles.Add(new Vector3Int(j, i, 0));
+                adjacentTiles.Add(new Vector3Int(j, -i, 0));
             }
         }
+
+        return adjacentTiles;
     }
 }
