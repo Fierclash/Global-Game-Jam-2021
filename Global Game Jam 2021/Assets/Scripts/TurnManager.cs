@@ -12,6 +12,7 @@ public class TurnManager : MonoBehaviour
     public int turnCounter;
     public AIManager AIUnits;
     public Tilemap map;
+    public Timer timer;
 
     // Progresses to the next turn and triggers the next
     // action of all AI units
@@ -30,6 +31,7 @@ public class TurnManager : MonoBehaviour
             unitMovement.Move(nextPosition);
         }
         turnCounter++;
+        timer.Tick();
     }
 
     #region Initialization and Reset

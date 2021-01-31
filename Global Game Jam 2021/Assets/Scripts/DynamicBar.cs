@@ -9,7 +9,6 @@ public class DynamicBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
     private const float MAX_VALUE = 1f;
-    private IEnumerator timerCoroutine;
 
     void Awake()
     {
@@ -17,6 +16,7 @@ public class DynamicBar : MonoBehaviour
         UpdateSize(MAX_VALUE);
     }
 
+    // Changes the size of the bar
     public void UpdateSize(float percent)
     {
         bar.value = percent;

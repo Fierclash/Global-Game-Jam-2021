@@ -64,8 +64,6 @@ public class Vision : MonoBehaviour
             }
         }
 
-        foreach (Vector3 vect in adjacentTiles)
-            Debug.Log(vect);
         return adjacentTiles;
     }
 }
