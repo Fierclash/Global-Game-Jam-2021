@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
     public Movement movement;
+    public Vision vision;
     public TurnManager turnManager;
 
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         if (movement.Move(mousePosition))
         {
             turnManager.NextTurn();
+            vision.UpdateVision(mousePosition);
         }
     }
 

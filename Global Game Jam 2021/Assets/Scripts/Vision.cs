@@ -14,14 +14,26 @@ using UnityEngine.Tilemaps;
 public class Vision : MonoBehaviour
 {
     public int vision = 1;
+    public Tile fogTile;
     public Tilemap fogOfWar;
 
     // Updates the Fog of War Tilemap based on player position
-    public void UpdateVision()
+    public void UpdateVision(Vector3 position)
     {
-        Vector3Int currentTile = fogOfWar.WorldToCell(transform.position);
+        Vector3Int currentTile = fogOfWar.WorldToCell(position);
 
-        for(int x=-vision; x <= vision; x++)
+        // Set Fog Tiles
+        int outerRange = vision + 1;
+        for (int x = -outerRange; x <= outerRange; x++)
+        {
+            for (int y = -outerRange; y <= outerRange; y++)
+            {
+                fogOfWar.SetTile(currentTile + new Vector3Int(x, y, 0), fogTile);
+            }
+        }
+
+        // Reveal Adjacent Tiles
+        for (int x=-vision; x <= vision; x++)
         {
             for (int y = -vision; y <= vision; y++)
             {
