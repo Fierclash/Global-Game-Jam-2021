@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 /*
  *  TurnManager Class
  *      Manages the turn based system
@@ -13,6 +14,7 @@ public class TurnManager : MonoBehaviour
     public AIManager AIUnits;
     public Tilemap map;
     public Timer timer;
+    public Text turnText;
 
     // Progresses to the next turn and triggers the next
     // action of all AI units
@@ -31,6 +33,7 @@ public class TurnManager : MonoBehaviour
             unitMovement.Move(nextPosition);
         }
         turnCounter++;
+        turnText.text = "Turn: " + turnCounter;
         timer.Tick();
     }
 
