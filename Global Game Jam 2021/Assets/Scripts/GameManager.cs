@@ -15,9 +15,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
             instance = this;
         else
-            Destroy(this);
-
-        DontDestroyOnLoad(this.gameObject);
+            Destroy(this.gameObject);
     }
 
     void Start()
@@ -27,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && currentScene != levelScene)
+        if (Input.GetMouseButtonDown(0) && currentScene == 0)
             StartGame();
     }
 
@@ -48,13 +46,13 @@ public class GameManager : MonoBehaviour
     #region Load Game
     public void StartGame()
     {
+        SceneManager.LoadScene(levelScene);
         currentScene = levelScene;
-        SceneManager.LoadScene(currentScene);
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(currentScene);
+        SceneManager.LoadScene(levelScene);
     }
 
     public void QuitGame()
