@@ -23,47 +23,48 @@ public class Vision : MonoBehaviour
         Vector3Int currentTile = fogOfWar.WorldToCell(position);
 
         // Set Fog Tiles
-        List<Vector3Int> currentTileset = DetermineAdjacentTiles(vision + 1, currentTile.x / 2);
+        List<Vector3Int> currentTileset = DetermineAdjacentTiles(vision + 1, currentTile.y);
         foreach (Vector3Int point in currentTileset)
         {
             fogOfWar.SetTile(currentTile + point, fogTile);
         }
 
         // Reveal Adjacent Tiles
-        currentTileset = DetermineAdjacentTiles(vision, currentTile.x / 2);
+        currentTileset = DetermineAdjacentTiles(vision, currentTile.y);
         foreach (Vector3Int point in currentTileset)
         {
             fogOfWar.SetTile(currentTile + point, null);
         }
     }
 
-    public List<Vector3Int> DetermineAdjacentTiles(int range, int positionParity)
+    public List<Vector3Int> DetermineAdjacentTiles(int range, int yPos)
     {
         List<Vector3Int> adjacentTiles = new List<Vector3Int>();
 
         // Middle Row
-        for (int i = range; i <= range; i++)
+        for (int i = -range; i <= range; i++)
             adjacentTiles.Add(new Vector3Int(i, 0, 0));
 
         // Upper and Lower Halves
-        // Since Middle row is already set, i < range does not need to include it
         int leftBound = -range;
         int rightBound = range;
-        for (int i = 0; i < range; i++)
+        for (int i = 1; i <= range; i++)
         {
             // Even Parity
-            if (i % 2 + positionParity == 0)
+            if ((i + yPos) % 2 == 0)
                 leftBound++;
             else
                 rightBound--;
 
-            for(int j = leftBound; j <= rightBound; j++)
+            for (int j = leftBound; j <= rightBound; j++)
             {
                 adjacentTiles.Add(new Vector3Int(j, i, 0));
                 adjacentTiles.Add(new Vector3Int(j, -i, 0));
             }
         }
 
+        foreach (Vector3 vect in adjacentTiles)
+            Debug.Log(vect);
         return adjacentTiles;
     }
 }
