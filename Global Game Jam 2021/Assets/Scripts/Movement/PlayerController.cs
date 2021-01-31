@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
     public Movement movement;
+    public TurnManager turnManager;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,10 @@ public class PlayerController : MonoBehaviour
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        movement.Move(mousePosition);
+        // if the move is valid, complete the turn
+        if (movement.Move(mousePosition))
+        {
+            turnManager.NextTurn();
+        }
     }
 }

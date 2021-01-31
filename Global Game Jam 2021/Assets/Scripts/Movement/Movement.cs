@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float upperLimit = 1.5f;
 
     // Validates moves
-    public void Move(Vector2 nextPosition)
+    public bool Move(Vector2 nextPosition)
     {
         Vector3Int gridPosition = map.WorldToCell(nextPosition);
         if (map.HasTile(gridPosition)) {
@@ -37,7 +37,10 @@ public class Movement : MonoBehaviour
         {
             // Debug.Log("Moving to" + destination);
             MoveAction(destination);
+            return true;
         }
+        
+        return false;
     }
 
     // Moves to another tile

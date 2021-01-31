@@ -130,9 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 312622010}
-  - component: {fileID: 312622012}
   - component: {fileID: 312622011}
-  - component: {fileID: 312622013}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -168,34 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0.1
   hostBody: {fileID: 839283589}
---- !u!114 &312622012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312622009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a944f429e6c3b40bd38c9b15417269, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &312622013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312622009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b79a4f42104e44b9cd5361713e8b79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   map: {fileID: 487709582}
-  movementSpeed: 1
-  hostBody: {fileID: 839283589}
-  movement: {fileID: 312622011}
   lowerLimit: 0.1
   upperLimit: 1.5
 --- !u!1 &426874793
@@ -1849,6 +1820,7 @@ MonoBehaviour:
   virusUnit: {fileID: 3927784744665000985, guid: 54160cca3a9f2ec4688780ced4a698db,
     type: 3}
   units: []
+  map: {fileID: 487709582}
 --- !u!1 &2140226425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,6 +1831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2140226427}
   - component: {fileID: 2140226426}
+  - component: {fileID: 2140226428}
   m_Layer: 0
   m_Name: Game System
   m_TagString: Untagged
@@ -1896,3 +1869,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2140226428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140226425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b79a4f42104e44b9cd5361713e8b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 312622011}
+  turnManager: {fileID: 2140226426}
