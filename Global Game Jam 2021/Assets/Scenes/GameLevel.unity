@@ -6852,7 +6852,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: XXX'
+  m_Text: 'Data Left: XXX'
 --- !u!222 &683053685
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27280,7 +27280,7 @@ MonoBehaviour:
   unitCount: 15
   virusUnit: {fileID: 3927784744665000985, guid: 54160cca3a9f2ec4688780ced4a698db,
     type: 3}
-  dataCount: 5
+  dataCount: 1
   dataUnit: {fileID: 2223395512204147756, guid: 5130138ed774dc94ab99febcdfaa112b,
     type: 3}
   corruptionCount: 20

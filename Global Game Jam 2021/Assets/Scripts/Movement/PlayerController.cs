@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Movement movement;
     public Vision vision;
     public TurnManager turnManager;
-    private int points = 0;
+    private int dataLeft;
     public Text scoreText;
     private bool isActing = false;
     [Range(0f, 1f)] public float actionTime;
@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = "Score: " + points;
+        dataLeft = ai.dataCount;
+        scoreText.text = "Data Left: " + dataLeft;
         vision.UpdateVision(transform.position);
     }
 
@@ -71,22 +72,22 @@ public class PlayerController : MonoBehaviour
         {
             dataAudio.Play();
             col.gameObject.SetActive(false);
-            points++;
-            scoreText.text = "Score: " + points;
+            dataLeft--;
+            scoreText.text = "Score: " + dataLeft;
         } else if (col.tag == "Corruption")
         {
             corruptAudio.Play();
             col.gameObject.SetActive(false);
             ai.corrupt();
         }
-        if(points == ai.dataCount)
-            endGame.ShowEndScreen(points, ai.dataCount, TurnManager.turnCounter);
+        if(dataLeft == 0)
+            endGame.ShowEndScreen(ai.dataCount - dataLeft, ai.dataCount, TurnManager.turnCounter);
     }
 
     private void Die()
     {
         dieAudio.Play();
         this.gameObject.SetActive(false);
-        endGame.ShowEndScreen(points, ai.dataCount, TurnManager.turnCounter);
+        endGame.ShowEndScreen(ai.dataCount - dataLeft, ai.dataCount, TurnManager.turnCounter);
     }
 }
