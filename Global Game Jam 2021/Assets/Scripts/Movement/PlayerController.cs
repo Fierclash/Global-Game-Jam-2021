@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     [Range(0f, 1f)] public float actionTime;
     public AIManager ai;
     public EndGame endGame;
+    public AudioSource moveAudio;
+    public AudioSource corruptAudio;
+    public AudioSource dataAudio;
+    public AudioSource dieAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour
         // if the move is valid, complete the turn
         if (movement.Move(mousePosition))
         {
+            moveAudio.Play();
             StartCoroutine(SetActing());
             turnManager.NextTurn();
             vision.UpdateVision(mousePosition);
@@ -64,11 +69,13 @@ public class PlayerController : MonoBehaviour
             Die();
         } else if (col.tag == "Data")
         {
+            dataAudio.Play();
             col.gameObject.SetActive(false);
             points++;
             scoreText.text = "Score: " + points;
         } else if (col.tag == "Corruption")
         {
+            corruptAudio.Play();
             col.gameObject.SetActive(false);
             ai.corrupt();
         }
@@ -78,6 +85,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        dieAudio.Play();
         this.gameObject.SetActive(false);
         endGame.ShowEndScreen(points, ai.dataCount, TurnManager.turnCounter);
     }
