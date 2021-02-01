@@ -6972,7 +6972,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelScene: 1
   currentScene: 1
-  buttonSound: {fileID: 812796049}
 --- !u!4 &711292540
 Transform:
   m_ObjectHideFlags: 0
@@ -7320,7 +7319,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!4 &839283589
 Transform:
@@ -26937,7 +26936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e813e23970c7b747a0a20ca0f59118f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitCount: 10
+  unitCount: 15
   virusUnit: {fileID: 3927784744665000985, guid: 54160cca3a9f2ec4688780ced4a698db,
     type: 3}
   dataCount: 5
