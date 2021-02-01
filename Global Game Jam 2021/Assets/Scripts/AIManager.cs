@@ -127,6 +127,8 @@ public class AIManager : MonoBehaviour
         List<Vector3> positions = GeneratePositions();
         for(int i =0; i < dataCount; i++)
         {
+            if (!dataUnits[i].activeSelf)
+                continue;
             Movement dataMove = dataUnits[i].GetComponentInChildren<Movement>();
             dataMove.MoveAction(positions[i]);
             Debug.Log("MOVING TO");
