@@ -27280,7 +27280,7 @@ MonoBehaviour:
   unitCount: 15
   virusUnit: {fileID: 3927784744665000985, guid: 54160cca3a9f2ec4688780ced4a698db,
     type: 3}
-  dataCount: 1
+  dataCount: 5
   dataUnit: {fileID: 2223395512204147756, guid: 5130138ed774dc94ab99febcdfaa112b,
     type: 3}
   corruptionCount: 20
