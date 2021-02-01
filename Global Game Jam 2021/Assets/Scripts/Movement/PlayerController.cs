@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
             dataAudio.Play();
             col.gameObject.SetActive(false);
             dataLeft--;
-            scoreText.text = "Score: " + dataLeft;
+            scoreText.text = "Data Left: " + dataLeft;
         } else if (col.tag == "Corruption")
         {
             corruptAudio.Play();
